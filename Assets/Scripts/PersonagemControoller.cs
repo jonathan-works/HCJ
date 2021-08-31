@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Player))]
 public class PersonagemControoller : MonoBehaviour
 {
+    public Player player;
     public Animator personagemAnimator;
     float input_x = 0;
     float input_y = 0;
@@ -14,14 +16,13 @@ public class PersonagemControoller : MonoBehaviour
     Rigidbody2D rb2D;
     Vector2 movimento = Vector2.zero;
 
-    // Start is called before the first frame update
     void Start()
     {
         esta_andando = false;
         rb2D = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         input_x = Input.GetAxisRaw("Horizontal");
@@ -46,6 +47,6 @@ public class PersonagemControoller : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        rb2D.MovePosition(rb2D.position + movimento * velocidade * Time.fixedDeltaTime);
+        rb2D.MovePosition(rb2D.position + movimento * player.entity.speed * Time.fixedDeltaTime);
     }
 }
