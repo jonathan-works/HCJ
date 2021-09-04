@@ -59,7 +59,7 @@ Camera:
   far clip plane: 1000
   field of view: 26.991467
   orthographic: 1
-  orthographic size: 2.5
+  orthographic size: 2.7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 7104928334523470488}
   - component: {fileID: 7104928334523470491}
   - component: {fileID: 7104928334523470490}
-  - component: {fileID: 7104928334523470493}
   - component: {fileID: 4416094161523612967}
+  - component: {fileID: 7104928334523470493}
   m_Layer: 0
   m_Name: Personagem
   m_TagString: Player
@@ -114,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7104928334523470484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -44.2, y: 24.9, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 805547204}
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ca51be449294d1cb07156f116c31c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 7104928334523470493}
   personagemAnimator: {fileID: 7104928334523470487}
   velocidade: 2
 --- !u!50 &7104928334523470491
@@ -253,52 +253,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6875, y: 0.26567617}
   m_EdgeRadius: 0
---- !u!114 &7104928334523470493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7104928334523470484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da642bcb308e44d2871a049d104cef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity:
-    name: LokodeAco
-    level: 1
-    currentHealth: 54
-    maxHealth: 100
-    currentMana: 34
-    maxMana: 100
-    currentStamina: 41
-    maxStamina: 100
-    strength: 2
-    resistence: 3
-    intelligence: 4
-    willpower: 5
-    damage: 1
-    defense: 3
-    speed: 2
-    attackDistance: 0.5
-    attackTimer: 1
-    cooldown: 2
-    inCombat: 0
-    target: {fileID: 0}
-    combatCoroutine: 0
-    dead: 0
-  regenHPEnabled: 1
-  regenHPTime: 5
-  regenHPValue: 5
-  regenMPEnabled: 1
-  regenMPTime: 10
-  regenMPValue: 5
-  manager: {fileID: 0}
-  health: {fileID: 0}
-  mana: {fileID: 0}
-  stamina: {fileID: 0}
-  exp: {fileID: 0}
 --- !u!70 &4416094161523612967
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -315,3 +269,49 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.8, y: 2.8}
   m_Direction: 0
+--- !u!114 &7104928334523470493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104928334523470484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da642bcb308e44d2871a049d104cef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity:
+    name: LokodeAco
+    level: 1
+    currentHealth: 44
+    maxHealth: 44
+    currentMana: 49
+    maxMana: 49
+    currentStamina: 15
+    maxStamina: 15
+    strength: 2
+    resistence: 3
+    intelligence: 4
+    willpower: 5
+    damage: 1
+    defense: 3
+    speed: 2
+    attackDistance: 0.5
+    attackTimer: 0
+    cooldown: 2
+    inCombat: 0
+    target: {fileID: 0}
+    combatCoroutine: 0
+    dead: 0
+  regenHPEnabled: 1
+  regenHPTime: 5
+  regenHPValue: 5
+  regenMPEnabled: 1
+  regenMPTime: 10
+  regenMPValue: 5
+  manager: {fileID: 0}
+  health: {fileID: 0}
+  mana: {fileID: 0}
+  stamina: {fileID: 0}
+  exp: {fileID: 0}

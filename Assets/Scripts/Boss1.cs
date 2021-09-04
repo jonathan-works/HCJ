@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class Boss1 : MonoBehaviour
 {
     [Header("Controller")]
@@ -30,14 +32,19 @@ public class Boss1 : MonoBehaviour
     public GameObject prefab;
     public bool respawn = true;
     public float respawnTime = 10f;
+
+    [Header("UI")]
+    public Slider healthSlider;
  
     Rigidbody2D rb2D;
-    Animator animator;
+    public Animator animator;
+    BoxCollider2D boxCollider2D;
  
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
  
         entity.maxHealth = manager.CalculateHealth(entity);
@@ -47,7 +54,10 @@ public class Boss1 : MonoBehaviour
         entity.currentHealth = entity.maxHealth;
         entity.currentMana = entity.maxMana;
         entity.currentStamina = entity.maxStamina;
- 
+
+        healthSlider.maxValue = entity.maxHealth;
+        healthSlider.value = entity.currentHealth;
+
         currentWaitTime = waitTime;
         if(waypointList.Length > 0)
         {
@@ -58,6 +68,12 @@ public class Boss1 : MonoBehaviour
  
     private void Update()
     {
+
+        healthSlider.value = entity.currentHealth;
+
+        if (boxCollider2D.isTrigger)
+            boxCollider2D.isTrigger = false;
+
         if (entity.dead)
             return;
  
@@ -66,6 +82,8 @@ public class Boss1 : MonoBehaviour
             entity.currentHealth = 0;
             Die();
         }
+
+        
  
         if (!entity.inCombat)
         {
@@ -102,6 +120,7 @@ public class Boss1 : MonoBehaviour
  
     private void OnTriggerStay2D(Collider2D collider)
     {
+        
         if(collider.tag == "Player" && !entity.dead)
         {
             entity.inCombat = true;
@@ -175,8 +194,8 @@ public class Boss1 : MonoBehaviour
  
             if (entity.target != null && !entity.target.GetComponent<Player>().entity.dead)
             {
-                animator.SetBool("attack", true);
- 
+                animator.SetTrigger("ataque");
+
                 float distance = Vector2.Distance(entity.target.transform.position, transform.position);
  
                 if (distance <= entity.attackDistance)
