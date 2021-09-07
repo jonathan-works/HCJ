@@ -221,10 +221,11 @@ public class Boss1 : MonoBehaviour
         entity.target = null;
  
         animator.SetBool("esta_andando", false);
- 
+
         // add exp no player
-        //manager.GainExp(rewardExperience);
- 
+        Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player.GainExp(rewardExperience);
+
         Debug.Log("O inimigo morreu: " + entity.name);
  
         StopAllCoroutines();

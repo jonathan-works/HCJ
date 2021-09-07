@@ -30,7 +30,8 @@ public class Entity
     public int damage = 1;
     public int defense = 1;
     public float speed = 2f;
- 
+    public int points = 0;
+
     [Header("Combat")]
     public float attackDistance = 0.5f;
     public float attackTimer = 1;
@@ -39,4 +40,7 @@ public class Entity
     public GameObject target;
     public bool combatCoroutine = false;
     public bool dead = false;
+
+    [Header("Component")]
+    public AudioSource entityAudio;
 }
