@@ -292,13 +292,13 @@ MonoBehaviour:
     maxMana: 49
     currentStamina: 15
     maxStamina: 15
-    strength: 2
-    resistence: 3
-    intelligence: 4
-    willpower: 5
+    strength: 1
+    resistence: 1
+    intelligence: 1
+    willpower: 1
     damage: 1
-    defense: 3
-    speed: 2
+    defense: 1
+    speed: 1.8
     points: 0
     attackDistance: 0.6
     attackTimer: 0

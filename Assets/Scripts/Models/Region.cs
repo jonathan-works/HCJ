@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 [Serializable]
-public class Region : MonoBehaviour
+public class Region
 {
-
-
+    public string name;
+    public Transform warpLocation;
 }

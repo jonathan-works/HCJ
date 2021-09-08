@@ -84,9 +84,9 @@ public class PersonagemControoller : MonoBehaviour
             return;
         }
 
-        Boss1 boss1 = player.entity.target.GetComponent<Boss1>();
+        Enemy Enemy = player.entity.target.GetComponent<Enemy>();
 
-        if(boss1.entity.dead){
+        if(Enemy.entity.dead){
             player.entity.target = null;
             return;
         }
@@ -95,7 +95,7 @@ public class PersonagemControoller : MonoBehaviour
 
         if(distancia <= player.entity.attackDistance){
             int dmg = player.manager.CalculateDamage(player.entity, player.entity.damage);
-            int monstroDefesa = player.manager.CalculateDefense(boss1.entity, boss1.entity.defense);
+            int monstroDefesa = player.manager.CalculateDefense(Enemy.entity, Enemy.entity.defense);
             int resultado = dmg - monstroDefesa;
 
             if(resultado < 0)
@@ -104,15 +104,17 @@ public class PersonagemControoller : MonoBehaviour
                 Debug.Log("Inimigo defendeu tudo");
             }
             
-            Debug.Log("Personagem atacando: "+ resultado.ToString() + "E vida do boss ficou: " + boss1.entity.currentHealth);
-            boss1.entity.currentHealth -= resultado;
-            boss1.entity.target = this.gameObject;
-            boss1.animator.SetTrigger("apanhar");
+            Debug.Log("Personagem atacando: "+ resultado.ToString() + "E vida do boss ficou: " + Enemy.entity.currentHealth);
+            Enemy.entity.currentHealth -= resultado;
+            Enemy.entity.target = this.gameObject;
+            Enemy.animator.SetTrigger("apanhar");
+            Enemy.ToBleed();
+
         }
         else
         {
             Debug.Log("Inimigo longe");
-            player.entity.target = boss1.gameObject;
+            player.entity.target = Enemy.gameObject;
         }
     }
 }

@@ -55,9 +55,9 @@ public class Player : MonoBehaviour
     public AudioClip levelUpSound;
     public int givePoints = 5;
 
-    //[Header("Respawn")]
-    //public float respawnTime = 5;
-    //public GameObject prefab;
+    [Header("Respawn")]
+    public float respawnTime = 5;
+    public GameObject prefab;
 
 
 
